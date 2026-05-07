@@ -4,16 +4,18 @@
         public $title;
         public $director;
         public $year;
-        public $genre;
+        public $genres;
 
-        public function __construct($title,$director,$year,Genre $genre) {
+        public function __construct($title,$director,$year,array $genres) {
             $this-> title = $title;
             $this-> director = $director;
             $this-> year = $year;
-            $this-> genre = $genre;
+            $this-> genres = $genres;
         }
 
         public function getMovieInfos () {
-            return "{$this->title} diretto da {$this->director} ({$this->year}) - Genere: {$this->genre->name}";
+            $movieGenres = array_map(fn ($g) => $g->name, $this->genres);
+            $movieGenresString = implode(", ", $movieGenres);
+            return "{$this->title} diretto da {$this->director} ({$this->year}) - Generi: {$movieGenresString}";
         }
     }
