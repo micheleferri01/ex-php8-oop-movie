@@ -6,7 +6,7 @@
         public $year;
         public $genre;
 
-        public function __construct($title,$director,$year,$genre) {
+        public function __construct($title,$director,$year,Genre $genre) {
             $this-> title = $title;
             $this-> director = $director;
             $this-> year = $year;
@@ -14,6 +14,6 @@
         }
 
         public function getMovieInfos () {
-            return "{$this->title} diretto da {$this->director} ({$this->year}) - Genere: {$this->genre}";
+            return "{$this->title} diretto da {$this->director} ({$this->year}) - Genere: {$this->genre->name}";
         }
     }
